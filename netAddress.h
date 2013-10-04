@@ -1,12 +1,16 @@
 /*
 Network (IP) address class
 */
+#include <"IPAddress.h">
 
 using namespace std;
 
-class router
+class netAddress
 {
+private:
+	IPAddress address;
+	IPAddress mask;
+public:
 
-		//figure out best way to represent ip address and mask
-	
+
 };
