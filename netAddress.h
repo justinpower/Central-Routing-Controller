@@ -11,6 +11,7 @@ private:
 	IPAddress address;
 	IPAddress mask;
 public:
-
+	netAddress();
+	netAddress(string address, string mask);
 
 };

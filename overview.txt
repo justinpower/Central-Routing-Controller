@@ -1,0 +1,18 @@
+router
+	links
+	route table
+links
+	net address
+	interface state
+route table
+	two dimensional vector
+net address
+	ip address
+	net mask
+interface state
+	status (up/down)
+	congestion
+	delay
+ip address
+	array of octets
+	bool mask
