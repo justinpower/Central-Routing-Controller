@@ -1,8 +1,10 @@
+#ifndef LINK_H
+#define LINK_H
 /*
 Link class
 */
-#include <"netAddress.h">
-#include <"ifState.h">
+#include "netAddress.h"
+#include "ifState.h"
 #include <string>
 using namespace std;
 
@@ -14,7 +16,8 @@ private:
 	netAddress network;
 	ifState state;
 	int ifSpeed;
-	
-	
-	
+public:
+	link();
 };
+
+#endif

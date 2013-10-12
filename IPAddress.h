@@ -1,3 +1,5 @@
+#ifndef IPADDRESS_H
+#define IPADDRESS_H
 /*
 Network (IP) address class
 */
@@ -12,8 +14,10 @@ private:
 public:
 	IPAddress();
 	IPAddress(string address, bool mask);
-	string addressToString(netAddress address);
+	string addressToString(IPAddress address);
 	IPAddress stringToAddress(string address);
 	bool setAddress(string address);
 
 };
+
+#endif

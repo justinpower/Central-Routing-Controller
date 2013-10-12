@@ -1,3 +1,5 @@
+#ifndef SNMP_H
+#define SNMP_H
 /*
 SNMP action class
 */
@@ -7,6 +9,7 @@ using namespace std;
 class snmp
 {
 private:
+string exec(char* cmd);
 
 public:
 	snmp();
@@ -16,3 +19,5 @@ public:
 	vector<string> getSpeeds(string target, string community);
 	
 };
+
+#endif

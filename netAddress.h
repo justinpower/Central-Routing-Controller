@@ -1,7 +1,9 @@
+#ifndef NETADDRESS_H
+#define NETADDRESS_H
 /*
 Network (IP) address class
 */
-#include <"IPAddress.h">
+#include "IPAddress.h"
 
 using namespace std;
 
@@ -15,3 +17,5 @@ public:
 	netAddress(string address, string mask);
 
 };
+
+#endif
