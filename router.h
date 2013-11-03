@@ -8,6 +8,7 @@ Router class
 #include "link.h"
 #include "routeTable.h"
 #include "snmp.h"
+#include "netAddress.h"
 using namespace std;
 
 class router
@@ -20,6 +21,7 @@ private:
 	vector<string> intIds;
 	vector<string> intIps;
 	snmp agent;
+	string vendor;
 public:
 	router();
 	bool initialize(string addr);
@@ -29,6 +31,7 @@ public:
 	bool setIntIps(vector<string> ips);
 	bool setIntIds(vector<string> ids);
 	vector<link> getLinks();
+	vector<netAddress> getLocalNets();
 	string getAddress();
 	string getName();
 	void printIntIps();

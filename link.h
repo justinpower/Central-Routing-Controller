@@ -18,6 +18,7 @@ private:
 	int ifSpeed;
 public:
 	link();
+	netAddress getConnectNet();
 };
 
 #endif

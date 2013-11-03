@@ -16,3 +16,32 @@ interface state
 ip address
 	array of octets
 	bool mask
+
+	
+	
+	To build topology:
+	Get the local networks of each router and add them to a table in the format:
+		NetAddress			Router		Cost
+		192.168.1.0/24		A			10
+		192.168.2.0/24		A			10
+		192.168.20.0/26		A			10
+		192.168.30.0/26		A			100
+		192.168.3.0/24		B			10
+		192.168.4.0/24		B			10
+		192.168.20.0/26		B			10
+		192.168.40.0/26		B			100
+		192.168.5.0/24		C			10
+		192.168.6.0/24		C			10
+		192.168.30.0/26		C			100
+		192.168.40.0/26		C			100
+		
+		Build an adjacency matrix based on the duplicate netAddress from the table above:
+		
+			A				B				C
+		A	0, L			10, 20.0/26		100, 30.0/26
+		
+		B	10, 20.0/26		0, L			100, 40.0/26
+		
+		C	100, 30.0/26	100, 40.0/26	0, L
+		
+		If routers are connected to each other over multiple networks, use the lowest cost links for the adjacency matrix.
