@@ -6,6 +6,7 @@
 #include "link.h"
 #include "routeTable.h"
 #include "snmp.h"
+#include <fstream>
 
 using namespace std;
 
@@ -13,11 +14,28 @@ router::router()
 {
 
 }
-bool router::initialize(string addr)
+bool router::initialize(string addr, bool test, string file)
 {
-	address = addr;
-	intIps = agent.getAddresses(address, "csusm!", false);
-	intIds = agent.getAddresses(address, "csusm!", true);
+	if (!test)
+	{
+		address = addr;
+		intIps = agent.getAddresses(address, "csusm!", false); //get the IPs
+		intIds = agent.getAddresses(address, "csusm!", true); //get the interface IDs
+		return true;
+	}
+	else
+	{
+		return loadFile(file);
+	}
+}
+bool router::loadFile(string file)
+{
+	ifstream infile(file);
+	string tempAddress, tempMask, tempIntID, tempIntName, tempSpeed;
+	while(infile >> tempAddress >> tempMask >> tempIntID >> tempIntName >> tempSpeed)
+	{
+		links.push_back(new link(tempAddress, tempMask, tempIntID, tempIntName, tempSpeed));
+	}
 }
 bool router::setAddress(string addr)
 {

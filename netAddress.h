@@ -12,10 +12,11 @@ class netAddress
 private:
 	IPAddress address;
 	IPAddress mask;
+	string slashNotation;
 public:
 	netAddress();
 	netAddress(string address, string mask);
-
+	string getSlashNet();
 };
 
 #endif

@@ -18,6 +18,35 @@ ip address
 	bool mask
 
 	
+	get the addresses
+		store them in a two dimensional array where each row contains a network, the router it's attached to, and a cost
+	expand the address array to include connections between routers
+		this is done by finding networks listed multiple times
+	create an adjacency matrix that represents the map, based on the two dimensional array created above
+		adjaceny matrix is also a two dimensional array with rows being rotuers and columns being routers and networks
+		a -1 in the adjacency matrix indicates that the two objects are not directly connected
+	create a hop object for each address and each router
+		a hop object contains:
+			its parent
+			its distance
+			its name
+			an indicator of whether its a router or network
+		the distance for each hop should be initialized to -1
+		the parent of each hop should be initialized to null
+	add the objects to a priority queue
+	to find the shortest paths to all networks from router A, set A's cost to 0
+	remove the minimum cost (non negative) hop from the priority queue (which would be A to start), called currSource
+	add this minmum hop to a list of hops whose shortest path is known
+	check each hop (currHop) that is still in the priority queue and look up its distance to currSource in the adjacency matrix
+		if currSource.distance (which would be the distance from the original source to currSoruce) plus the distance from currSource to currHop being checked is less than the currHop.distance
+			then update currHop.distance with the new lower value and resort the priority queue
+		
+	
+	
+	
+	
+	
+	
 	
 	To build topology:
 	Get the local networks of each router and add them to a table in the format:

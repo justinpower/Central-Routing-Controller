@@ -24,7 +24,8 @@ private:
 	string vendor;
 public:
 	router();
-	bool initialize(string addr);
+	bool initialize(string addr, bool test, string file);
+	bool loadFile(string file);
 	bool setAddress(string addr);
 	bool addLink(link newLink);
 	bool setRouteTable(routeTable table);

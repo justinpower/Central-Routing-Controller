@@ -13,12 +13,14 @@ class link
 private:
 	int id;
 	string name;
-	netAddress network;
+	//netAddress network;
+	string network; //temporary until netAddress implemented
 	ifState state;
 	int ifSpeed;
 public:
-	link();
-	netAddress getConnectNet();
+	link(string linkAddress, string linkMask, string linkID, string linkName, string linkSpeed);
+	//netAddress getNetwork();
+	string getNetwork();
 };
 
 #endif
