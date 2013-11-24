@@ -32,7 +32,8 @@ public:
 	bool setIntIps(vector<string> ips);
 	bool setIntIds(vector<string> ids);
 	vector<link> getLinks();
-	vector<netAddress> getLocalNets();
+	vector<string> getLocalNets();
+//	vector<netAddress> getLocalNets();
 	string getAddress();
 	string getName();
 	void printIntIps();

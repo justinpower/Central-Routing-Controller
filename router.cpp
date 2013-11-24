@@ -87,6 +87,17 @@ void router::printIntIds()
 	}
 }
 
+vector<string> router::getLocalNets()
+{
+	vector<string> localNets;
+	for (int i=0; i<links.size(); i++)
+	{
+		localNets.push_back(links[i].getNetwork());
+	}
+	return localNets;
+}
+
+/*
 vector<netAddress> router::getLocalNets()
 {
 	vector<netAddress> localNets;
@@ -96,5 +107,6 @@ vector<netAddress> router::getLocalNets()
 	}
 	return localNets;
 }
+*/
 
 #endif

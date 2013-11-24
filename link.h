@@ -16,11 +16,12 @@ private:
 	//netAddress network;
 	string network; //temporary until netAddress implemented
 	ifState state;
-	int ifSpeed;
+	string ifSpeed;
 public:
 	link(string linkAddress, string linkMask, string linkID, string linkName, string linkSpeed);
 	//netAddress getNetwork();
 	string getNetwork();
+	string getSpeed();
 };
 
 #endif

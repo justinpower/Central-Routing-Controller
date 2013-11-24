@@ -25,4 +25,9 @@ string link::getNetwork()
 	return network;
 }
 
+string link::getSpeed()
+{
+	return ifSpeed;
+}
+
 #endif
