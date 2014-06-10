@@ -1,3 +1,6 @@
+#ifndef STRINGMANIP_HPP
+#define STRINGMANIP_HPP
+
 #include<string>
 #include<vector>
 
@@ -26,3 +29,5 @@ vector<string> split(string data, string delim)
         }
         return result;
 }
+
+#endif

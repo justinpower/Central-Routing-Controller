@@ -3,7 +3,7 @@
 #include "router.h"
 #include <string>
 #include <vector>
-#include "link.h"
+#include "netLink.h"
 #include "routeTable.h"
 #include "snmp.h"
 #include <fstream>
@@ -14,8 +14,9 @@ router::router()
 {
 
 }
-bool router::initialize(string addr, bool test, string file)
+bool router::initialize(string rName, string addr, bool test, string file)
 {
+	name = rName;
 	if (!test)
 	{
 		address = addr;
@@ -30,11 +31,13 @@ bool router::initialize(string addr, bool test, string file)
 }
 bool router::loadFile(string file)
 {
-	ifstream infile(file);
+	ifstream infile(file.c_str());
 	string tempAddress, tempMask, tempIntID, tempIntName, tempSpeed;
 	while(infile >> tempAddress >> tempMask >> tempIntID >> tempIntName >> tempSpeed)
 	{
-		links.push_back(new link(tempAddress, tempMask, tempIntID, tempIntName, tempSpeed));
+		netLinks.push_back(netLink(tempAddress, tempMask, tempIntID, tempIntName, tempSpeed));
+		intIds.push_back(tempIntID);
+		intIps.push_back(tempAddress);
 	}
 }
 bool router::setAddress(string addr)
@@ -42,7 +45,7 @@ bool router::setAddress(string addr)
 	address = addr;
 	return true;
 }
-bool router::addLink(link newLink)
+bool router::addNetLink(netLink newNetLink)
 {
 	return true;
 }
@@ -60,9 +63,9 @@ bool router::setIntIds(vector<string> ids)
 	intIds = ids;
 	return true;
 }
-vector<link> router::getLinks()
+vector<netLink> router::getNetLinks()
 {
-	return links;
+	return netLinks;
 }
 string router::getAddress()
 {
@@ -90,9 +93,9 @@ void router::printIntIds()
 vector<string> router::getLocalNets()
 {
 	vector<string> localNets;
-	for (int i=0; i<links.size(); i++)
+	for (int i=0; i<netLinks.size(); i++)
 	{
-		localNets.push_back(links[i].getNetwork());
+		localNets.push_back(netLinks[i].getNetwork());
 	}
 	return localNets;
 }
@@ -101,9 +104,9 @@ vector<string> router::getLocalNets()
 vector<netAddress> router::getLocalNets()
 {
 	vector<netAddress> localNets;
-	for (int i=0; i<links.size(); i++)
+	for (int i=0; i<netLinks.size(); i++)
 	{
-		localNets.push_back(links[i].getConnectedNet());
+		localNets.push_back(netLinks[i].getConnectedNet());
 	}
 	return localNets;
 }

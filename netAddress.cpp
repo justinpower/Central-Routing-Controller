@@ -13,10 +13,10 @@ netAddress::netAddress()
 }
 netAddress::netAddress(string address, string mask)
 {
-	slashNotation = adress + "/" + mask; //evenutally need to have it actually generate slash notation?
+	slashNotation = address + "/" + mask; //evenutally need to have it actually generate slash notation?
 }
 
-string netAddress:getSlashNet()
+string netAddress::getSlashNet()
 {
 	return slashNotation;
 }

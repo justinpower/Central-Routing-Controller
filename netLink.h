@@ -1,24 +1,25 @@
-#ifndef LINK_H
-#define LINK_H
+#ifndef netLink_H
+#define netLink_H
 /*
-Link class
+netLink class
 */
 #include "netAddress.h"
 #include "ifState.h"
 #include <string>
 using namespace std;
 
-class link
+class netLink
 {
 private:
-	int id;
+	string id;
 	string name;
 	//netAddress network;
 	string network; //temporary until netAddress implemented
 	ifState state;
 	string ifSpeed;
 public:
-	link(string linkAddress, string linkMask, string linkID, string linkName, string linkSpeed);
+	netLink(string netLinkAddress, string netLinkMask, string netLinkID, string netLinkName, string netLinkSpeed);
+	netLink();
 	//netAddress getNetwork();
 	string getNetwork();
 	string getSpeed();
